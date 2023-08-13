@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import CryptoDropdown from "./components/CryptoDropdown.jsx";
+import CryptoChart from "./components/CryptoChart";
 
 export default function Home() {
   const [selectedCrypto, setSelectedCrypto] = useState("ethereum");
@@ -36,6 +37,9 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <CryptoDropdown options={options} onChange={setSelectedCrypto} />
+      {cryptoData && (
+        <CryptoChart label={selectedCrypto.toUpperCase()} data={cryptoData} />
+      )}
     </main>
   );
 }
